@@ -14,22 +14,27 @@
 
     // 右侧栏选择器：第一个是你提供的通用标识，其余是各页面/历史版本的兜底
     const SIDEBAR_SELECTORS = [
-        '[data-za-detail-view-path-module="RightSideBar"]', // 通用标识，最稳
-        '.css-bkewaf',          // 首页/问题页当前版本（类名会变，仅兜底）
-        '.Question-sideColumn', // 问题页老版本
-        '.TopstorySideBar',     // 首页老版本
-        '.SearchSideBar'        // 搜索页
-    ];
+    '[data-za-detail-view-path-module="RightSideBar"]',
+    '.css-bkewaf',
+    '.Question-sideColumn',
+    '.TopstorySideBar',
+    '.SearchSideBar',
+    'div:has(> a[aria-label="边栏锚点"])'
+];
 
-    // 解除主内容区宽度限制，并让 flex 容器撑满
-    const EXTRA_CSS = `
-        .Question-mainColumn,
-        .Topstory-mainColumn {
-            width: auto !important;
-            max-width: none !important;
-            flex: 1 1 auto !important;
-        }
-    `;
+   const EXTRA_CSS = `
+    :root {
+        --container-width: 100% !important;
+        --container-main-column-width: auto !important;
+    }
+    .Question-mainColumn,
+    .Topstory-mainColumn,
+    .Post-Main {
+        width: auto !important;
+        max-width: none !important;
+        flex: 1 1 auto !important;
+    }
+`;
 
     function removeSidebars() {
         for (const sel of SIDEBAR_SELECTORS) {

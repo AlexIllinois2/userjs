@@ -24,7 +24,7 @@
 
    const EXTRA_CSS = `
     :root {
-        --container-width: 100% !important;
+        --container-width: 90% !important;
         --container-main-column-width: auto !important;
     }
     .Question-mainColumn,
